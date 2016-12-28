@@ -1,5 +1,6 @@
 # respondence
 [![Build Status](https://travis-ci.org/Phenelo/respondence.svg?branch=master)](https://travis-ci.org/Phenelo/respondence)
+
 A simple hapijs plugin for sending e-mails. Uses [nodemailer](https://github.com/nodemailer/nodemailer).
 
 ## Usage

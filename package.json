@@ -24,6 +24,7 @@
     "hapi": "15.2.x",
     "code": "4.0.x",
     "lab": "11.1.x",
-    "nodemailer-stub-transport": "1.1.x"
+    "nodemailer-stub-transport": "1.1.x",
+    "coveralls": "2.11.x"
   }
 }
