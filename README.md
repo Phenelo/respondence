@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/Phenelo/respondence.svg?branch=master)](https://travis-ci.org/Phenelo/respondence)
 [![Coverage Status](https://coveralls.io/repos/github/Phenelo/respondence/badge.svg?branch=master)](https://coveralls.io/github/Phenelo/respondence)
 [![Code Climate](https://codeclimate.com/github/Phenelo/respondence/badges/gpa.svg)](https://codeclimate.com/github/Phenelo/respondence)
-[![NPM Version](https://badge.fury.io/js/respondence.svg)](https://www.npmjs.com/knekshelf)
+[![NPM Version](https://badge.fury.io/js/respondence.svg)](https://www.npmjs.com/respondence)
 [![Dependency Status](https://david-dm.org/Phenelo/respondence.svg)](https://david-dm.org/Phenelo/respondence)<br>
 [![Known Vulnerabilities](https://snyk.io/test/github/phenelo/respondence/badge.svg)](https://snyk.io/test/github/phenelo/respondence)
 [![NSP Status](https://nodesecurity.io/orgs/nelo/projects/7e4937e5-bd13-4f84-83ad-bfe18041831d/badge)](https://nodesecurity.io/orgs/nelo/projects/7e4937e5-bd13-4f84-83ad-bfe18041831d)
