@@ -5,8 +5,7 @@
 [![NPM Version](https://badge.fury.io/js/respondence.svg)](https://www.npmjs.com/knekshelf)
 [![Dependency Status](https://david-dm.org/Phenelo/respondence.svg)](https://david-dm.org/Phenelo/respondence)<br>
 [![Known Vulnerabilities](https://snyk.io/test/github/phenelo/respondence/badge.svg)](https://snyk.io/test/github/phenelo/respondence)
-[![NSP Status](https://nodesecurity.io/orgs/nelo/projects/7e4937e5-bd13-4f84-83ad-bfe18041831d/badge)]
-(https://nodesecurity.io/orgs/nelo/projects/7e4937e5-bd13-4f84-83ad-bfe18041831d)
+[![NSP Status](https://nodesecurity.io/orgs/nelo/projects/7e4937e5-bd13-4f84-83ad-bfe18041831d/badge)](https://nodesecurity.io/orgs/nelo/projects/7e4937e5-bd13-4f84-83ad-bfe18041831d)
 
 A simple hapijs plugin for sending e-mails. Uses [nodemailer](https://github.com/nodemailer/nodemailer).
 
