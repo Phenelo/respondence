@@ -1,0 +1,29 @@
+{
+  "name": "respondence",
+  "version": "0.1.0",
+  "author": "Denmark Dionisio",
+  "description": "Denmark Dionisio <iamdionisiodenmark@gmail.com>",
+  "keywords": [
+    "hapi",
+    "emailer"
+  ],
+  "license": "MIT",
+  "repository": "git://github.com/Phenelo/respondence",
+  "bugs": "https://github.com/Phenelo/respondence/issues",
+  "main": "lib/index.js",
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "scripts": {
+    "test": "lab -c -v -L -a code"
+  },
+  "dependencies": {
+    "nodemailer": ">=2.7.x"
+  },
+  "devDependencies": {
+    "hapi": "15.2.x",
+    "code": "4.0.x",
+    "lab": "11.1.x",
+    "nodemailer-stub-transport": "1.1.x"
+  }
+}
