@@ -2,10 +2,11 @@
   "name": "respondence",
   "version": "0.2.2",
   "author": "Denmark Dionisio",
-  "description": "Denmark Dionisio <iamdionisiodenmark@gmail.com>",
+  "description": "A simple hapijs plugin for sending e-mails.",
   "keywords": [
     "hapi",
-    "emailer"
+    "emailer",
+    "nodemailer"
   ],
   "license": "MIT",
   "repository": "git://github.com/Phenelo/respondence",
