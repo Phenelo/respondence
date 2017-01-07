@@ -1,6 +1,6 @@
 {
   "name": "respondence",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "author": "Denmark Dionisio",
   "description": "A simple hapijs plugin for sending e-mails.",
   "keywords": [
