@@ -67,26 +67,6 @@ describe('Registering the plugin', () => {
         });
     });
 
-    it('Should create SMTP transport plugin object', (done) => {
-
-        const options = {
-            transport: {
-                plugin: () => {},
-                params: {
-                    api_key: 'apikey',
-                    domain: 'domain'
-                }
-            }
-        };
-
-        internals.register(options, (err) => {
-
-            expect(err).to.not.exist();
-
-            return done();
-        });
-    });
-
     it('Should throw an error', (done) => {
 
         const options = {};
