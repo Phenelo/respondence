@@ -22,10 +22,10 @@
     "nodemailer": "4.0.x"
   },
   "devDependencies": {
-    "hapi": "16.4.x",
     "code": "4.1.x",
+    "coveralls": "2.13.x",
+    "hapi": "^16.4.3",
     "lab": "13.1.x",
-    "nodemailer-stub-transport": "1.1.x",
-    "coveralls": "2.13.x"
+    "nodemailer-stub-transport": "1.1.x"
   }
 }
