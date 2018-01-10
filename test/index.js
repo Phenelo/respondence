@@ -13,15 +13,20 @@ const it = lab.it;
 const expect = Code.expect;
 
 const internals = {
-    register: (options, next) => {
+    register: async function (options) {
 
         internals.server.register({
             register: Respondence,
             options: options
-        }, (err) => {
+        })
+            .then(() => {
 
-            return next(err);
-        });
+                return Promise.resolve();
+            })
+            .catch((err) => {
+
+                return Promise.resolve(err);
+            });
     },
     mail: {
         from: '"Baroof" <baroof@gmail.com>',
@@ -59,24 +64,34 @@ describe('Registering the plugin', () => {
             }
         };
 
-        internals.register(options, (err) => {
+        internals.register(options)
+            .then(() => {
 
-            expect(err).to.not.exist();
+                return done();
+            })
+            .catch((err) => {
 
-            return done();
-        });
+                expect(err).to.exist();
+
+                return done();
+            });
     });
 
     it('Should throw an error', (done) => {
 
         const options = {};
 
-        internals.register(options, (err) => {
+        internals.register(options)
+            .then(() => {
 
-            expect(err).to.exist();
+                return done();
+            })
+            .catch((err) => {
 
-            return done();
-        });
+                expect(err).to.exist();
+
+                return done();
+            });
     });
 
     it('Should create SMTP stub transport', (done) => {
@@ -88,12 +103,17 @@ describe('Registering the plugin', () => {
             }
         };
 
-        internals.register(options, (err) => {
+        internals.register(options)
+            .then(() => {
 
-            expect(err).to.not.exist();
+                return done();
+            })
+            .catch((err) => {
 
-            return done();
-        });
+                expect(err).to.exist();
+
+                return done();
+            });
     });
 });
 
@@ -101,31 +121,53 @@ describe('Sending email and verifying SMTP server', () => {
 
     it('Should send an email', (done) => {
 
-        internals.server.plugins.respondence.send(internals.mail, (err, res) => {
+        internals.server.plugins.respondence.send(internals.mail)
+            .then((res) => {
 
-            expect(err).to.not.exist();
-            expect(res).to.exist();
+                expect(res).to.exist();
 
-            return done();
-        });
+                return done();
+            })
+            .catch((err) => {
+
+                expect(err).to.not.exist();
+
+                return done();
+            });
     });
 
     it('Should send an email synchronously', (done) => {
 
-        expect(internals.server.plugins.respondence.send(internals.mail)).to.not.exist();
+        internals.server.plugins.respondence.send(internals.mail)
+            .then((res) => {
 
-        return done();
+                expect(res).to.exist();
+
+                return done();
+            })
+            .catch((err) => {
+
+                expect(err).to.not.exist();
+
+                return done();
+            });
     });
 
     it('Should verify', (done) => {
 
-        internals.server.plugins.respondence.verify((err, res) => {
+        internals.server.plugins.respondence.verify()
+            .then((res) => {
 
-            expect(err).to.not.exist();
-            expect(res).to.exist();
+                expect(res).to.exist();
 
-            return done();
-        });
+                return done();
+            })
+            .catch((err) => {
+
+                expect(err).to.not.exist();
+
+                return done();
+            });
     });
 
     it('Should return an error for sending email', (done) => {
@@ -141,26 +183,41 @@ describe('Sending email and verifying SMTP server', () => {
             }
         };
 
-        internals.register(options, (err) => {
+        internals.register(options)
+            .then(() => {
 
-            expect(err).to.not.exist();
+                internals.server.plugins.respondence.send(internals.mail)
+                    .then(() => {
 
-            internals.server.plugins.respondence.send(internals.mail, (err) => {
+                        return done();
+                    })
+                    .catch((err) => {
+
+                        expect(err).to.exist();
+
+                        return done();
+                    });
+            })
+            .catch((err) => {
+
+                expect(err).to.not.exist();
+
+                return done();
+            });
+    });
+
+    it('Should return an verifiying error', (done) => {
+
+        internals.server.plugins.respondence.verify()
+            .then(() => {
+
+                return done();
+            })
+            .catch((err) => {
 
                 expect(err).to.exist();
 
                 return done();
             });
-        });
-    });
-
-    it('Should return an verifiying error', (done) => {
-
-        internals.server.plugins.respondence.verify((err) => {
-
-            expect(err).to.exist();
-
-            return done();
-        });
     });
 });
