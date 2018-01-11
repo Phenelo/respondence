@@ -14,8 +14,8 @@ A simple hapijs plugin for sending e-mails. Uses [nodemailer](https://github.com
 const Respondence = require('respondence');
 const server = new Hapi.Server();
 
-server.register({
-    register: Respondence,
+await server.register({
+    plugin: Respondence,
     options: {
         smtp: 'smtps://user%40gmail.com:pass@smtp.gmail.com'
     }
@@ -31,31 +31,32 @@ const mail = {
      text: 'A bar without foo is barfoo.'
 },
 
-request.server.plugins.respondence.send(mail, (err, res) => {
+server.plugins.respondence.send(internals.mail)
+                            .then((res) => {
 
-    if (err) {
-        console.log(err);
+                                return res;
+                            })
+                            .catch((err) => {
 
-        return reply(err);
-    }
+                                console.log(err);
 
-    return reply(res);
-});
+                                return err;
+                            })
 ```
 
 ## Verifying SMTP connection
 ```js
+server.plugins.respondence.verify()
+                            .then((res) => {
 
-request.server.plugins.respondence.verify((err, res) => {
+                                return res; // Server ready.
+                            })
+                            .catch((err) => {
 
-    if (err) {
-        console.log(err);
+                                console.log(err);
 
-        return reply(err);
-    }
-
-    return reply(res); // Server ready.
-});
+                                return err;
+                            })
 ```
 
 ## Registering with a transport plugin
