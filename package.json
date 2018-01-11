@@ -19,13 +19,13 @@
     "test": "lab -c -v -L -a code"
   },
   "dependencies": {
-    "nodemailer": "4.0.x"
+    "nodemailer": "^4.4.1"
   },
   "devDependencies": {
-    "code": "4.1.x",
-    "coveralls": "2.13.x",
-    "hapi": "^16.4.3",
-    "lab": "13.1.x",
+    "code": "^5.1.2",
+    "coveralls": "^3.0.x",
+    "hapi": "^17.2.x",
+    "lab": "^15.2.x",
     "nodemailer-stub-transport": "1.1.x"
   }
 }
