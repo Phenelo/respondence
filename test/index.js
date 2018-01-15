@@ -15,18 +15,16 @@ const expect = Code.expect;
 const internals = {
     register: async function (options) {
 
-        internals.server.register({
-            register: Respondence,
-            options: options
-        })
-            .then(() => {
-
-                return Promise.resolve();
-            })
-            .catch((err) => {
-
-                return Promise.resolve(err);
+        try {
+            await internals.server.register({
+                plugin: Respondence,
+                options: options
             });
+        }
+        catch (err) {
+            return Promise.reject(err);
+        }
+
     },
     mail: {
         from: '"Baroof" <baroof@gmail.com>',
@@ -34,11 +32,10 @@ const internals = {
         subject: 'Foo',
         text: 'A bar without foo is barfoo.'
     },
-    init: () => {
+    init: async function () {
 
         internals.server = new Hapi.Server();
-        internals.server.connection();
-        internals.server.initialize();
+        await internals.server.start();
     }
 };
 
@@ -46,9 +43,11 @@ describe('Registering the plugin', () => {
 
     beforeEach((done) => {
 
-        internals.init();
+        internals.init()
+            .then(() => {
 
-        return done();
+                return done;
+            });
     });
 
     it('Should create default SMTP transport object', (done) => {
@@ -67,13 +66,13 @@ describe('Registering the plugin', () => {
         internals.register(options)
             .then(() => {
 
-                return done();
+                return done;
             })
             .catch((err) => {
 
                 expect(err).to.exist();
 
-                return done();
+                return done;
             });
     });
 
@@ -84,13 +83,13 @@ describe('Registering the plugin', () => {
         internals.register(options)
             .then(() => {
 
-                return done();
+                return done;
             })
             .catch((err) => {
 
                 expect(err).to.exist();
 
-                return done();
+                return done;
             });
     });
 
@@ -106,13 +105,13 @@ describe('Registering the plugin', () => {
         internals.register(options)
             .then(() => {
 
-                return done();
+                return done;
             })
             .catch((err) => {
 
                 expect(err).to.exist();
 
-                return done();
+                return done;
             });
     });
 });
@@ -126,13 +125,13 @@ describe('Sending email and verifying SMTP server', () => {
 
                 expect(res).to.exist();
 
-                return done();
+                return done;
             })
             .catch((err) => {
 
                 expect(err).to.not.exist();
 
-                return done();
+                return done;
             });
     });
 
@@ -143,13 +142,13 @@ describe('Sending email and verifying SMTP server', () => {
 
                 expect(res).to.exist();
 
-                return done();
+                return done;
             })
             .catch((err) => {
 
                 expect(err).to.not.exist();
 
-                return done();
+                return done;
             });
     });
 
@@ -160,49 +159,46 @@ describe('Sending email and verifying SMTP server', () => {
 
                 expect(res).to.exist();
 
-                return done();
+                return done;
             })
             .catch((err) => {
 
                 expect(err).to.not.exist();
 
-                return done();
+                return done;
             });
     });
 
     it('Should return an error for sending email', (done) => {
 
-        internals.init();
-
-        const options = {
-            transport: {
-                plugin: Stub,
-                params: {
-                    error: new Error('Error.')
-                }
-            }
-        };
-
-        internals.register(options)
+        internals.init()
             .then(() => {
 
-                internals.server.plugins.respondence.send(internals.mail)
+                const options = {
+                    transport: {
+                        plugin: Stub,
+                        params: {
+                            error: new Error('Error.')
+                        }
+                    }
+                };
+
+                return internals.register(options)
                     .then(() => {
 
-                        return done();
-                    })
-                    .catch((err) => {
+                        return internals.server.plugins.respondence.send(internals.mail)
+                            .then(() => {
 
-                        expect(err).to.exist();
-
-                        return done();
+                                return done;
+                            });
                     });
+
             })
             .catch((err) => {
 
-                expect(err).to.not.exist();
+                expect(err).to.exist();
 
-                return done();
+                return done;
             });
     });
 
@@ -211,13 +207,13 @@ describe('Sending email and verifying SMTP server', () => {
         internals.server.plugins.respondence.verify()
             .then(() => {
 
-                return done();
+                return done;
             })
             .catch((err) => {
 
                 expect(err).to.exist();
 
-                return done();
+                return done;
             });
     });
 });
