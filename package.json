@@ -1,6 +1,6 @@
 {
   "name": "respondence",
-  "version": "0.2.4",
+  "version": "0.3.4",
   "author": "Denmark Dionisio",
   "description": "A simple hapijs plugin for sending e-mails.",
   "keywords": [
@@ -13,19 +13,19 @@
   "bugs": "https://github.com/Phenelo/respondence/issues",
   "main": "lib/index.js",
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=8.0.0"
   },
   "scripts": {
     "test": "lab -c -v -L -a code"
   },
   "dependencies": {
-    "nodemailer": "^4.4.1"
+    "nodemailer": "5.1.x"
   },
   "devDependencies": {
-    "code": "^5.1.2",
-    "coveralls": "^3.0.x",
-    "hapi": "^17.2.x",
-    "lab": "^15.2.x",
+    "code": "5.2.x",
+    "coveralls": "3.0.x",
+    "hapi": "17.8.x",
+    "lab": "18.0.x",
     "nodemailer-stub-transport": "1.1.x"
   }
 }

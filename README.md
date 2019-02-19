@@ -5,7 +5,6 @@
 [![NPM Version](https://badge.fury.io/js/respondence.svg)](https://www.npmjs.com/respondence)
 [![Dependency Status](https://david-dm.org/Phenelo/respondence.svg)](https://david-dm.org/Phenelo/respondence)<br>
 [![Known Vulnerabilities](https://snyk.io/test/github/phenelo/respondence/badge.svg)](https://snyk.io/test/github/phenelo/respondence)
-[![NSP Status](https://nodesecurity.io/orgs/nelo/projects/7e4937e5-bd13-4f84-83ad-bfe18041831d/badge)](https://nodesecurity.io/orgs/nelo/projects/7e4937e5-bd13-4f84-83ad-bfe18041831d)
 
 A simple hapijs plugin for sending e-mails. Uses [nodemailer](https://github.com/nodemailer/nodemailer).
 
@@ -31,39 +30,33 @@ const mail = {
      text: 'A bar without foo is barfoo.'
 },
 
-server.plugins.respondence.send(internals.mail)
-                            .then((res) => {
-
-                                return res;
-                            })
-                            .catch((err) => {
-
-                                console.log(err);
-
-                                return err;
-                            })
+try {
+    
+    await server.plugins.respondence.send(internals.mail);
+}
+catch(err) {
+    
+    console.log(err);
+}
 ```
 
 ## Verifying SMTP connection
 ```js
-server.plugins.respondence.verify()
-                            .then((res) => {
-
-                                return res; // Server ready.
-                            })
-                            .catch((err) => {
-
-                                console.log(err);
-
-                                return err;
-                            })
+try {
+    
+    await server.plugins.respondence.verify();
+}
+catch(err) {
+    
+    console.log(err);
+}
 ```
 
 ## Registering with a transport plugin
 ```js
 const Mailgun = require('nodemailer-mailgun-transport');
 
-server.register({
+await server.register({
     register: Respondence,
     options: {
         plugin: Mailgun,
