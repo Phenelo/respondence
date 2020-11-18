@@ -19,7 +19,7 @@
     "test": "lab -c -v -L -a code"
   },
   "dependencies": {
-    "nodemailer": "5.1.x"
+    "nodemailer": "6.4.16"
   },
   "devDependencies": {
     "code": "5.2.x",
